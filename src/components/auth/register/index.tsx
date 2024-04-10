@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom"
 import { TextField, Button, Typography } from "@mui/material";
 
 const RegisterPage = () => {
@@ -10,7 +11,7 @@ const RegisterPage = () => {
         <TextField type="password" fullWidth={true} margin='normal' label="Пароль" variant="outlined" placeholder="Введите пароль"/>
         <TextField type="password" fullWidth={true} margin='normal' label="Пароль" variant="outlined" placeholder="Повторите пароль"/>
         <Button sx={{fontFamily:'Poppins', margin: 2, width: '60%'}} variant="contained">Регистрация</Button>
-        <Typography variant="body1" sx={{fontFamily: 'Poppins'}}>У вас есть аккаунт? <span className="incsitityText">Авторизация</span></Typography>
+        <Typography variant="body1" sx={{fontFamily: 'Poppins'}}>У вас есть аккаунт? <Link to='../login'>Авторизация</Link></Typography>
       </>
     );
 };

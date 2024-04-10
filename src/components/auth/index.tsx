@@ -18,8 +18,8 @@ const AuthRootComponent = () => {
       login,
       password
     }
-    const user = await instance.post(url: '#', userData)
-    console.log(user.data)
+    //const user = await instance.post(url: '#', userData)
+    console.log(userData)
   }
 
   return (
