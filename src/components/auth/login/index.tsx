@@ -1,8 +1,9 @@
 import React, { Fragment } from 'react';
 import { TextField, Button, Typography } from "@mui/material";
 import { Link } from 'react-router-dom';
+import { IPropsLogin } from '../../../common/types/auth';
 
-const LoginPage = (props: any) => {
+const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
   const { setLogin, setPassword } = props
   return (
     <>
