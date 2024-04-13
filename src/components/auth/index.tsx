@@ -1,32 +1,40 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import LoginPage from './login';
 import RegisterPage from './register';
 import './style.css'
 import { Box } from '@mui/system';
 import { instance } from '../../utils/axios/intex';
-
+import { useAppDispatch } from '../../utils/hook';
 
 const AuthRootComponent: React.FC = (): JSX.Element => {
   const [login, setLogin] = useState('')
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('') 
   const location = useLocation()
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e: { preventDefault: () => void; }) => {
     e.preventDefault()
     if(location.pathname === '/login') {
-      const userData = {
-        login,
-        password
+      try{
+        const userData = {
+          login,
+          password
+        }
+        const user = await instance.post ('auth/login', userData)
+        await dispatch(user.data)
+        navigate('/')
+        console.log(user.data)
+      }catch (e){
+        return e
       }
-      const user = await instance.post ('auth/login', userData)
-      console.log(user.data)
     } else {
         if(password === repeatPassword) {
           const userData = {
             login,
-            password        
+            password
           }
           const newUser = await instance.post ('auth/register', userData)
           console.log (newUser.data) 
