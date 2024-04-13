@@ -2,9 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  width: 99vw;
+  height: 98vh;
   .form {
     width: 80%;
+    .incitingText {
+      color: blue;
+      cursor: pointer;
+    }
   }
 }

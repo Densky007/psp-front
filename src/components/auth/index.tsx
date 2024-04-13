@@ -6,9 +6,10 @@ import './style.css'
 import { Box } from '@mui/system';
 import { instance } from '../../utils/axios/intex';
 import { useAppDispatch } from '../../utils/hook';
+import { AppErrors } from '../../common/errors';
 
 const AuthRootComponent: React.FC = (): JSX.Element => {
-  const [login, setLogin] = useState('')
+  const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repeatPassword, setRepeatPassword] = useState('') 
   const location = useLocation()
@@ -20,7 +21,7 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
     if(location.pathname === '/login') {
       try{
         const userData = {
-          login,
+          email,
           password
         }
         const user = await instance.post ('auth/login', userData)
@@ -33,13 +34,13 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
     } else {
         if(password === repeatPassword) {
           const userData = {
-            login,
+            email,
             password
           }
           const newUser = await instance.post ('auth/register', userData)
           console.log (newUser.data) 
         } else {
-          throw new Error('У вас не совпадают пароли')
+          throw new Error(AppErrors.PasswordDoNotMatch)
         }
     }
   }
@@ -59,8 +60,17 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
           boxShadow={'5px 5px 10px #ccc'}
         >
           {location.pathname === '/login' 
-            ? <LoginPage setLogin={setLogin} setPassword={setPassword}/> : location.pathname === '/register' 
-              ? <RegisterPage setLogin={setLogin} setPassword={setPassword} setRepeatPassword={setRepeatPassword} /> : null}
+            ? <LoginPage 
+              setEmail={setEmail} 
+              setPassword={setPassword}
+              navigate={navigate} 
+            /> : location.pathname === '/register' 
+              ? <RegisterPage 
+                setEmail={setEmail} 
+                setPassword={setPassword} 
+                setRepeatPassword={setRepeatPassword}
+                navigate={navigate}
+              /> : null}
         </Box>
       </form>
     </div>
