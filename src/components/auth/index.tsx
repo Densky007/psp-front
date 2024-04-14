@@ -24,21 +24,25 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
           email,
           password
         }
-        const user = await instance.post ('auth/login', userData)
+        const user = await instance.post ('auth/login', userData) //url запроса к бэку
         await dispatch(user.data)
         navigate('/')
-        console.log(user.data)
       }catch (e){
         return e
       }
     } else {
         if(password === repeatPassword) {
-          const userData = {
-            email,
-            password
+          try {
+            const userData = {
+              email,
+              password
+            }
+            const newUser = await instance.post ('auth/register', userData) //url запроса к бэку
+            await dispatch(newUser.data)
+            navigate('/')
+          }catch (e) {
+            return e
           }
-          const newUser = await instance.post ('auth/register', userData)
-          console.log (newUser.data) 
         } else {
           throw new Error(AppErrors.PasswordDoNotMatch)
         }
