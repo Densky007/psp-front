@@ -7,6 +7,9 @@ import { Box } from '@mui/system';
 import { instance } from '../../utils/axios/intex';
 import { useAppDispatch } from '../../utils/hook';
 import { AppErrors } from '../../common/errors';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup'
+import { LoginScheme } from '../../utils/yup';
 
 const AuthRootComponent: React.FC = (): JSX.Element => {
   const [email, setEmail] = useState('')
@@ -15,18 +18,25 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
   const location = useLocation()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+  const {
+    register,
+    formState: {
+      errors
+    }, handleSubmit
+  } = useForm({
+    resolver: yupResolver(LoginScheme)
+  })
 
-  const handleSubmit = async (e: { preventDefault: () => void; }) => {
-    e.preventDefault()
+  const handleSubmitForm = async (data: any) => {
     if(location.pathname === '/login') {
       try{
         const userData = {
-          email,
-          password
+          email: data.email,
+          password: data.password
         }
         const user = await instance.post ('auth/login', userData) //url запроса к бэку
         await dispatch(user.data)
-        navigate('/')
+        navigate('/1')
       }catch (e){
         return e
       }
@@ -39,7 +49,7 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
             }
             const newUser = await instance.post ('auth/register', userData) //url запроса к бэку
             await dispatch(newUser.data)
-            navigate('/')
+            navigate('/1')
           }catch (e) {
             return e
           }
@@ -51,7 +61,7 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
 
   return (
     <div className='root'>
-      <form className="form" onSubmit={handleSubmit}>
+      <form className="form" onSubmit={handleSubmit(handleSubmitForm)}>
         <Box
           display='flex'
           justifyContent='center'
@@ -65,15 +75,17 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
         >
           {location.pathname === '/login' 
             ? <LoginPage 
-              setEmail={setEmail} 
-              setPassword={setPassword}
               navigate={navigate} 
+              register={register}
+              errors={errors}
             /> : location.pathname === '/register' 
               ? <RegisterPage 
                 setEmail={setEmail} 
                 setPassword={setPassword} 
                 setRepeatPassword={setRepeatPassword}
                 navigate={navigate}
+                register={register}
+                errors={errors}
               /> : null}
         </Box>
       </form>

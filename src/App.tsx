@@ -6,6 +6,7 @@ import Page4 from "./components/page4";
 import Page5 from "./components/page5";
 import Page6 from "./components/page6";
 import Page7 from "./components/page7";
+import Exit from "./components/exit";
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import PrivateRoute from './utils/router/privateRoute';
@@ -28,6 +29,7 @@ function App() {
           <Route path="/5" element={<Page5 />} /> {/*в приватный маршрут*/}
           <Route path="/6" element={<Page6 />} /> {/*в приватный маршрут*/}
           <Route path="/7" element={<Page7 />} /> {/*в приватный маршрут*/}
+          <Route path="" element={<Exit />} /> {/*в приватный маршрут*/}
           <Route path="login" element={<AuthRootComponent />} />
           <Route path="register" element={<AuthRootComponent />} />
         </Routes>

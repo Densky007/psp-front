@@ -14,46 +14,52 @@ const TopBarComponent = () => {
   }, [pathname])
 
   return (
-    <Box component='nav' display='flex' justifyContent='space-between'>
+    <Box className={classes.root}>
       <ListItem>
         <ListItemButton onClick={() => navigate('/1')}>
-          <Typography className={classes.root} variant="h3" >Button 1</Typography>
+          <Typography className={classes.navItem} variant="h4" >Button 1</Typography>
         </ListItemButton>
       </ListItem>
-      <Box sx={{border: 1}}></Box>
+      <Box border={1}></Box>
       <ListItem>
         <ListItemButton onClick={() => navigate('/2')}>
-            <Typography className={classes.root} variant="h3" >Button 2</Typography>
+          <Typography className={classes.navItem} variant="h4" >Button 2</Typography>
         </ListItemButton>
       </ListItem>
-      <Box sx={{border: 1}}></Box>
+      <Box border={1}></Box>
       <ListItem>
         <ListItemButton onClick={() => navigate('/3')}>
-            <Typography className={classes.root} variant="h3" >Button 3</Typography>
+          <Typography className={classes.navItem} variant="h4" >Button 3</Typography>
         </ListItemButton>
       </ListItem>
-      <Box sx={{border: 1}}></Box>     
+      <Box border={1}></Box>     
       <ListItem>
         <ListItemButton  onClick={() => navigate('/4')}>
-            <Typography className={classes.root} variant="h3" >Button 4</Typography>
+          <Typography className={classes.navItem} variant="h4" >Button 4</Typography>
         </ListItemButton>
       </ListItem>
-      <Box sx={{border: 1}}></Box>    
+      <Box border={1}></Box>    
       <ListItem>
         <ListItemButton onClick={() => navigate('/5')}>
-            <Typography className={classes.root} variant="h3" >Button 5</Typography>
+          <Typography className={classes.navItem} variant="h4" >Button 5</Typography>
         </ListItemButton>
       </ListItem>
-      <Box sx={{border: 1}}></Box>
+      <Box border={1}></Box>
       <ListItem>
         <ListItemButton onClick={() => navigate('/6')}>
-          <Typography className={classes.root} variant="h3" >Button 6</Typography>
+          <Typography className={classes.navItem} variant="h4" >Button 6</Typography>
         </ListItemButton>
       </ListItem>
-      <Box sx={{border: 1}}></Box>
+      <Box border={1}></Box>
       <ListItem>
-        <ListItemButton  onClick={() => navigate('/7')}>
-            <Typography className={classes.root} variant="h3" >Button 7</Typography>
+        <ListItemButton onClick={() => navigate('/7')}>
+          <Typography className={classes.navItem} variant="h4" >Button 7</Typography>
+        </ListItemButton>
+      </ListItem>
+      <Box border={1}></Box>
+      <ListItem>
+        <ListItemButton onClick={() => navigate('/login')}>
+            <Typography className={classes.navItem} variant="h4" >Выход</Typography>
         </ListItemButton>
       </ListItem>
     </Box>
