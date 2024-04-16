@@ -9,14 +9,17 @@ const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
       <Typography variant="h2" margin='normal' fontFamily='Poppins' textAlign='center'>Авторизация</Typography>
       <Typography variant="body1" margin='normal' fontFamily='Poppins' textAlign='center'>Введите Ваш логин и пароль</Typography>
       <TextField
+        type='email'
         error={!!errors.email} 
         fullWidth={true} 
         margin='normal' 
-        label="Логин" 
+        label="Email" 
         variant="outlined" 
         placeholder="Введите email" 
-        helperText={errors.email ? 'Введите ваш email' : ''}
-        {...register('email')}
+        helperText={errors.email ? `${errors.email.message}` : ''}
+        {...register('email',{
+          required: 'Введите корректный email'
+        })}
         />
       <TextField
         error={!!errors.password}  
@@ -26,8 +29,11 @@ const LoginPage: React.FC<IPropsLogin> = (props: IPropsLogin): JSX.Element => {
         label="Пароль" 
         variant="outlined" 
         placeholder="Введите пароль"
-        helperText={errors.password ? 'Пароль должен быть минимум из 6 символов' : ''} 
-        {...register('password')}
+        helperText={errors.password ? `${errors.password.message}` : ''} 
+        {...register('password', {
+          required: 'Введите пароль',
+          minLength: 6
+        })}
         />
       <Button type="submit" sx={{fontFamily:'Poppins', margin: 2, width: '60%'}} variant="contained">Войти</Button>
       <Typography variant="body1" sx={{fontFamily: 'Poppins'}}>Нет аккаунта? <span className='incitingText' onClick={() => navigate('/register')}>Регистрация</span></Typography>

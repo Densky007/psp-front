@@ -8,8 +8,6 @@ import { instance } from '../../utils/axios/intex';
 import { useAppDispatch } from '../../utils/hook';
 import { AppErrors } from '../../common/errors';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup'
-import { LoginScheme } from '../../utils/yup';
 
 const AuthRootComponent: React.FC = (): JSX.Element => {
   const [email, setEmail] = useState('')
@@ -23,9 +21,7 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
     formState: {
       errors
     }, handleSubmit
-  } = useForm({
-    resolver: yupResolver(LoginScheme)
-  })
+  } = useForm()
 
   const handleSubmitForm = async (data: any) => {
     if(location.pathname === '/login') {
@@ -44,8 +40,8 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
         if(password === repeatPassword) {
           try {
             const userData = {
-              email,
-              password
+              email: data.email,
+              password: data.password
             }
             const newUser = await instance.post ('auth/register', userData) //url запроса к бэку
             await dispatch(newUser.data)
@@ -80,9 +76,6 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
               errors={errors}
             /> : location.pathname === '/register' 
               ? <RegisterPage 
-                setEmail={setEmail} 
-                setPassword={setPassword} 
-                setRepeatPassword={setRepeatPassword}
                 navigate={navigate}
                 register={register}
                 errors={errors}

@@ -13,7 +13,6 @@ export interface IPropsRegister<
 TFieldValues extends FieldValues = FieldValues,
 TContext = any
 > {
-  setEmail: (value: string) => void
   navigate: (to: string) => void
   register: UseFormRegister<TFieldValues>
   errors: FieldErrors<TFieldValues>
