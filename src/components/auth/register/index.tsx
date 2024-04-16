@@ -3,7 +3,7 @@ import { TextField, Button, Typography } from "@mui/material";
 import { IPropsRegister } from '../../../common/types/auth';
 
 const RegisterPage: React.FC<IPropsRegister> = (props: IPropsRegister): JSX.Element => {
-  const { navigate, register, errors } = props 
+  const { navigate, register, errors } = props
   return (
       <>
       <Typography variant="h2" margin='normal' fontFamily='Poppins' textAlign='center'>Регистрация</Typography>

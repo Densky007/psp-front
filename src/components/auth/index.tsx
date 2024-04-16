@@ -10,12 +10,10 @@ import { AppErrors } from '../../common/errors';
 import { useForm } from 'react-hook-form';
 
 const AuthRootComponent: React.FC = (): JSX.Element => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [repeatPassword, setRepeatPassword] = useState('') 
   const location = useLocation()
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
+
   const {
     register,
     formState: {
@@ -37,7 +35,7 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
         return e
       }
     } else {
-        if(password === repeatPassword) {
+        if(data.password === data.repeatPassword) {
           try {
             const userData = {
               email: data.email,
