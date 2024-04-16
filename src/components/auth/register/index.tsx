@@ -47,7 +47,7 @@ const RegisterPage: React.FC<IPropsRegister> = (props: IPropsRegister): JSX.Elem
         {...register('repeatPassword', {
           required: 'Повторите пароль',
           minLength: 6
-        })} 
+        })}
         />
       <Button type='submit' sx={{fontFamily:'Poppins', margin: 2, width: '60%'}} variant="contained">Регистрация</Button>
       <Typography variant="body1" sx={{fontFamily: 'Poppins'}}>У вас уже есть аккаунт? <span className='incitingText' onClick={() => navigate('/login')}>Авторизация</span></Typography>
