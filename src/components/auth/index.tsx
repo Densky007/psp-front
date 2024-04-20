@@ -8,6 +8,7 @@ import { instance } from '../../utils/axios/intex';
 import { useAppDispatch } from '../../utils/hook';
 import { AppErrors } from '../../common/errors';
 import { useForm } from 'react-hook-form';
+import { TextField } from '@mui/material';
 
 const AuthRootComponent: React.FC = (): JSX.Element => {
   const location = useLocation()
@@ -28,28 +29,34 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
           email: data.email,
           password: data.password
         }
-        const user = await instance.post ('auth/login', userData) //url запроса к бэку
-        await dispatch(user.data)
+        //const user = await instance.post ('auth/login', userData) //url запроса к бэку
+        //await dispatch(user.data)
+        console.log(data)
         navigate('/1')
       }catch (e){
         return e
       }
     } else {
-        if(data.password === data.repeatPassword) {
+        //if(data.password === data.repeatPassword) {
           try {
             const userData = {
               email: data.email,
               password: data.password
             }
-            const newUser = await instance.post ('auth/register', userData) //url запроса к бэку
-            await dispatch(newUser.data)
+            if (data.password === data.repeatPassword) {
+            //const newUser = await instance.post ('auth/register', userData) //url запроса к бэку
+            //await dispatch(newUser.data)
             navigate('/1')
+            } else {
+              alert('Пароли не совпадают')
+            }
+            console.log(data)
           }catch (e) {
             return e
           }
-        } else {
-          throw new Error(AppErrors.PasswordDoNotMatch)
-        }
+        //} else {
+          //throw new Error(AppErrors.PasswordDoNotMatch)
+        //}
     }
   }
 
