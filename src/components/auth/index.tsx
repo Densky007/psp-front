@@ -9,6 +9,7 @@ import { useAppDispatch } from '../../utils/hook';
 import { AppErrors } from '../../common/errors';
 import { useForm } from 'react-hook-form';
 import { TextField } from '@mui/material';
+import { loginUser, registerUser } from '../../store/thunk/auth';
 
 const AuthRootComponent: React.FC = (): JSX.Element => {
   const location = useLocation()
@@ -25,38 +26,24 @@ const AuthRootComponent: React.FC = (): JSX.Element => {
   const handleSubmitForm = async (data: any) => {
     if(location.pathname === '/login') {
       try{
-        const userData = {
-          email: data.email,
-          password: data.password
-        }
-        //const user = await instance.post ('auth/login', userData) //url запроса к бэку
-        //await dispatch(user.data)
+        await dispatch(loginUser(data))
         console.log(data)
         navigate('/1')
       }catch (e){
         return e
       }
     } else {
-        //if(data.password === data.repeatPassword) {
-          try {
-            const userData = {
-              email: data.email,
-              password: data.password
-            }
-            if (data.password === data.repeatPassword) {
-            //const newUser = await instance.post ('auth/register', userData) //url запроса к бэку
-            //await dispatch(newUser.data)
-            navigate('/1')
-            } else {
-              alert('Пароли не совпадают')
-            }
-            console.log(data)
-          }catch (e) {
-            return e
+        try {
+          if (data.password === data.repeatPassword) {
+          await dispatch(registerUser(data))
+          console.log(data)
+          navigate('/1')
+          } else {
+            alert('Пароли не совпадают')
           }
-        //} else {
-          //throw new Error(AppErrors.PasswordDoNotMatch)
-        //}
+        }catch (e) {
+          return e
+        }
     }
   }
 
