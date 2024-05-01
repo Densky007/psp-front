@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useAppDispatch } from '../../utils/hook';
+import { getProduct } from '../../store/thunk/assets';
 
-const page3 = () => {
+const Page3 = () => {
+
+  const dispatch = useAppDispatch()
+
+  useEffect (() => {
+    dispatch(getProduct('')) //запрос изделия
+  }, [])
+  
   return (
     <div>
         <h1>Каллибровка</h1>
@@ -8,4 +17,4 @@ const page3 = () => {
   );
 };
 
-export default page3;
+export default Page3;
