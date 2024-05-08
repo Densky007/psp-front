@@ -2,18 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { Box, Button, TextField, Typography } from '@mui/material';
 import { useStyles } from './styles';
 import DataLoaderDropdown from '../../components/dropMenu';
+import DownloadButton from '../../components/downloadButton';
 
 
-const Page3 = ()=> {
+const Page1 = ()=> {
   
   const classes = useStyles();
   const [items, setItems] = useState([]);
   const [serial, setSerial] = useState({})
   const [formData, setFormData] = useState({
-    'Дата начала откачки': '',
-    'Скорость натекания': '',
-    'Время в печи': '',
-    'Дата окончания процесса откачки': '',
+    'Генератор водорода': '',
+    'Накал катода': '',
+    'ШкалаИП': '',
+    'Шкала': '',
+    'Смещение': '',
   });
   const handleSerial = (serialNum: any) => {
       setSerial(serialNum)
@@ -51,10 +53,11 @@ const Page3 = ()=> {
       }
       const result = await response.json();
       setFormData({
-        'Дата начала откачки': result[0].title, //result[0].serialNumber
-        'Скорость натекания': result[0].title,
-        'Время в печи': result[0].body,
-        'Дата окончания процесса откачки': result[0].passivationStart,
+        'Генератор водорода': result[0].title, //result[0].serialNumber
+        'Накал катода': result[0].title,
+        'ШкалаИП': result[0].body,
+        'Шкала': result[0].passivationStart,
+        'Смещение': result[0].passivationStart,
       })
     } catch (error) { 
       console.error('Error sending data:', error)
@@ -81,28 +84,41 @@ const Page3 = ()=> {
     }
   };
 
-
-
   return (
     <Box className={classes.root}>
-      <Typography variant='h3' padding='10px'>Вакуум и печь</Typography>
+      <Typography variant='h3' padding='10px'>Инструкции</Typography>
       <Box className={classes.navItem}>
-        <DataLoaderDropdown onSendData={handleSerial}/>
+        <DownloadButton 
+          url={'https://example.com/path/to/your/file.pdf'} 
+          filename={'Chamber_Prepare.pdf'} 
+          text={'Подготовка разрядной камеры'} />
+        <DownloadButton 
+          url={'https://example.com/path/to/your/file.pdf'} 
+          filename={'Calibrate.pdf'} 
+          text={'Калибровка'} />
       </Box>
       <Box className={classes.navItem}>
-        <TextField name='Дата начала откачки' label='Дата начала откачки' type='date' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата начала откачки']} onChange={handleDateChange}></TextField>
-        <TextField name='Скорость натекания' label='Скорость натекания' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Скорость натекания']} onChange={handleDateChange}></TextField>
+        <DownloadButton 
+          url={'https://example.com/path/to/your/file.pdf'} 
+          filename={'Chamber_Prepare.pdf'} 
+          text={'Пассивация (HeF2)'} />
+        <DownloadButton 
+          url={'https://example.com/path/to/your/file.pdf'} 
+          filename={'Calibrate.pdf'} 
+          text={'Пассивация (Рабочая смесь)'} /> 
       </Box>
       <Box className={classes.navItem}>
-      <TextField name='Дата окончания процесса откачки' label='Дата окончания процесса откачки' type='date' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата окончания процесса откачки']} onChange={handleDateChange}></TextField>
-        <TextField name='Время в печи' label='Время в печи' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Время в печи']} onChange={handleDateChange}></TextField>
-      </Box>
-      <Box className={classes.navItem}>
-        <Button variant="contained" fullWidth onClick={fetchData}>Загрузить из БД</Button>
-        <Button variant="contained" fullWidth onClick={handleSubmit}>Сохранить в БД</Button>
+        <DownloadButton 
+          url={'https://example.com/path/to/your/file.pdf'} 
+          filename={'Chamber_Prepare.pdf'} 
+          text={'Учет и анализ данных'} />
+        <DownloadButton 
+          url={'https://example.com/path/to/your/file.pdf'} 
+          filename={'Calibrate.pdf'} 
+          text={'Приготовление премикса'} /> 
       </Box>
     </Box>
   );
 };
 
-export default Page3;
+export default Page1;

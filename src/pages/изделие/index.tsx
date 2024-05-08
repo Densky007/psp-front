@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { useAppDispatch } from '../../utils/hook';
-import { getProduct } from '../../store/thunk/assets';
-import { Box, Button, FormControl, IconButton, Input, InputBase, InputLabel, MenuItem, Select, TextField, Typography, selectClasses } from '@mui/material';
+import { Box, Button, TextField, Typography } from '@mui/material';
 import { useStyles } from "./styles";
 import DataLoaderDropdown from '../../components/dropMenu';
-import { AlignHorizontalCenter, Block } from '@mui/icons-material';
-import { display } from '@mui/system';
 
-const Page1 = ()=> {
+
+const Page6 = ()=> {
   
-  const dispatch = useAppDispatch();
   const classes = useStyles();
   const [items, setItems] = useState([]);
   const [serial, setSerial] = useState({})
@@ -92,10 +88,6 @@ const Page1 = ()=> {
   };
 
 
-  useEffect (() => {
-    dispatch(getProduct('')) //запрос изделия
-  }, [])
-
   return (
     <Box className={classes.root}>
       <Typography variant='h3' padding='10px'>Изделие</Typography>
@@ -125,4 +117,4 @@ const Page1 = ()=> {
   );
 };
 
-export default Page1;
+export default Page6;
