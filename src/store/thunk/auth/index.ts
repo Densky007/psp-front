@@ -13,6 +13,7 @@ export const loginUser = createAsyncThunk(
       if (e.responce && e.responce.data.message) {
         return rejectWithValue(e.responce.data.message)
       } else {
+        alert ('Ошибка соединения с сервером')
         return rejectWithValue(e.message)
       }
     }
@@ -30,6 +31,7 @@ export const registerUser = createAsyncThunk(
       if (e.responce && e.responce.data.message) {
         return rejectWithValue(e.responce.data.message)
       } else {
+        alert ('Ошибка соединения с сервером')
         return rejectWithValue(e.message)
       }
     }

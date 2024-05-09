@@ -18,14 +18,14 @@ function App() {
         <div className="App" >
           <Routes>
             <Route element={<PrivateRoute />} >
-            
+              <Route path="/1" element={<Изделие />} /> {/*в приватный маршрут*/}
+              <Route path="/2" element={<ВакуумИПечь />} /> {/*в приватный маршрут*/}
+              <Route path="/3" element={<Калибровка />} /> {/*в приватный маршрут*/}
+              <Route path="/4" element={<Пассивация />} /> {/*в приватный маршрут*/}
+              <Route path="/5" element={<Журнал />} /> {/*в приватный маршрут*/}
+              <Route path="/6" element={<Инструкции />} /> {/*в приватный маршрут*/}
             </Route>
-            <Route path="/1" element={<Изделие />} /> {/*в приватный маршрут*/}
-            <Route path="/2" element={<ВакуумИПечь />} /> {/*в приватный маршрут*/}
-            <Route path="/3" element={<Калибровка />} /> {/*в приватный маршрут*/}
-            <Route path="/4" element={<Пассивация />} /> {/*в приватный маршрут*/}
-            <Route path="/5" element={<Журнал />} /> {/*в приватный маршрут*/}
-            <Route path="/6" element={<Инструкции />} /> {/*в приватный маршрут*/}
+
             <Route path="login" element={<AuthRootComponent />} />
             <Route path="register" element={<AuthRootComponent />} />
           </Routes>

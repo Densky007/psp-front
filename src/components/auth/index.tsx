@@ -4,11 +4,8 @@ import LoginPage from './login';
 import RegisterPage from './register';
 import './style.css'
 import { Box } from '@mui/system';
-import { instance } from '../../utils/axios/intex';
 import { useAppDispatch } from '../../utils/hook';
-import { AppErrors } from '../../common/errors';
 import { useForm } from 'react-hook-form';
-import { TextField } from '@mui/material';
 import { loginUser, registerUser } from '../../store/thunk/auth';
 
 const AuthRootComponent: React.FC = (): JSX.Element => {
