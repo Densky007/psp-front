@@ -108,10 +108,10 @@ const Page6 = ()=> {
         <Button variant="contained" fullWidth onClick={handleSubmit}>Сохранить в БД</Button>
       </Box>
       <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <img src={imageUrl}/>
+        {/* <img src={imageUrl}/> */}
       </Box>
       <Box sx={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <input type="file" accept='image/*'/>
+        {/* <input type="file" accept='image/*'/> */}
       </Box>
     </Box>
   );
