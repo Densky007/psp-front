@@ -85,7 +85,7 @@ const Page1 = ()=> {
 
   return (
     <Box className={classes.root}>
-      <Typography variant='h3' padding='10px'>Пассивация</Typography>
+      <Typography variant='h3' padding='10px' alignSelf='center'>Пассивация</Typography>
       <Box className={classes.navItem}>
         <DataLoaderDropdown onSendData={handleSerial}/>
       </Box>
@@ -93,29 +93,29 @@ const Page1 = ()=> {
         <Typography>Тиратрон</Typography>
       </Box>
       <Box className={classes.navItem}>
-        <Typography width='200px'>Генератор водорода</Typography>
-        <TextField name='Генератор водорода' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Генератор водорода']} onChange={handleDateChange}></TextField>
+        <Typography width='200px' alignContent='center'>Генератор водорода</Typography>
+        <TextField name='Генератор водорода' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Генератор водорода']} onChange={handleDateChange}></TextField>
       </Box>
       <Box className={classes.navItem}>
-        <Typography width='200px'>Накал катода</Typography>
-        <TextField name='Накал катода' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Накал катода']} onChange={handleDateChange}></TextField>
+        <Typography width='200px' alignContent='center'>Накал катода</Typography>
+        <TextField name='Накал катода' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Накал катода']} onChange={handleDateChange}></TextField>
       </Box>
       <Box className={classes.navItem}>
         <Typography>ИП</Typography>
       </Box>
       <Box className={classes.navItem}>
-        <Typography width='200px'>Шкала</Typography>
-        <TextField name='ШкалаИП' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['ШкалаИП']} onChange={handleDateChange}></TextField>        
+        <Typography width='200px' alignContent='center'>Шкала</Typography>
+        <TextField name='ШкалаИП' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['ШкалаИП']} onChange={handleDateChange}></TextField>        
       </Box>
       <Box className={classes.navItem}>
         <Typography>Датчик давления</Typography>
       </Box>
       <Box className={classes.navItem}>
-        <Typography width='200px'>Шкала</Typography>
-        <TextField name='Шкала' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Шкала']} onChange={handleDateChange}></TextField>      </Box>
+        <Typography width='200px' alignContent='center'>Шкала</Typography>
+        <TextField name='Шкала' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Шкала']} onChange={handleDateChange}></TextField>      </Box>
       <Box className={classes.navItem}>
-        <Typography width='200px'>Смещение</Typography>
-        <TextField name='Смещение' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Смещение']} onChange={handleDateChange}></TextField>
+        <Typography width='200px' alignContent='center'>Смещение</Typography>
+        <TextField name='Смещение' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Смещение']} onChange={handleDateChange}></TextField>
       </Box>
       <Box className={classes.navItem}>
         <Button variant="contained" fullWidth onClick={fetchData}>Загрузить из БД</Button>

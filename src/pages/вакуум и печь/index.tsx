@@ -85,18 +85,27 @@ const Page3 = ()=> {
 
   return (
     <Box className={classes.root}>
-      <Typography variant='h3' padding='10px'>Вакуум и печь</Typography>
+      <Typography variant='h3' padding='10px' alignSelf='center'>Вакуум и печь</Typography>
       <Box className={classes.navItem}>
         <DataLoaderDropdown onSendData={handleSerial}/>
       </Box>
       <Box className={classes.navItem}>
-        <TextField name='Дата начала откачки' label='Дата начала откачки' type='date' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата начала откачки']} onChange={handleDateChange}></TextField>
-        <TextField name='Скорость натекания' label='Скорость натекания' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Скорость натекания']} onChange={handleDateChange}></TextField>
+        <Typography width='200px'>Дата начала откачки</Typography>
+        <TextField name='Дата начала откачки' type='date' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата начала откачки']} onChange={handleDateChange}></TextField>
       </Box>
       <Box className={classes.navItem}>
-      <TextField name='Дата окончания процесса откачки' label='Дата окончания процесса откачки' type='date' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата окончания процесса откачки']} onChange={handleDateChange}></TextField>
-        <TextField name='Время в печи' label='Время в печи' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Время в печи']} onChange={handleDateChange}></TextField>
+        <Typography width='200px'>Скорость натекания</Typography>
+        <TextField name='Скорость натекания' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Скорость натекания']} onChange={handleDateChange}></TextField>
       </Box>
+      <Box className={classes.navItem}>
+        <Typography width='200px'>Время в печи</Typography>
+        <TextField name='Время в печи' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Время в печи']} onChange={handleDateChange}></TextField>
+      </Box>
+      <Box className={classes.navItem}>
+        <Typography width='200px'>Дата окончания процесса откачки</Typography>
+        <TextField name='Дата окончания процесса откачки' type='date' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата окончания процесса откачки']} onChange={handleDateChange}></TextField>      
+      </Box>
+
       <Box className={classes.navItem}>
         <Button variant="contained" fullWidth onClick={fetchData}>Загрузить из БД</Button>
         <Button variant="contained" fullWidth onClick={handleSubmit}>Сохранить в БД</Button>

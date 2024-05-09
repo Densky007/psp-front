@@ -90,18 +90,18 @@ const Page6 = ()=> {
 
   return (
     <Box className={classes.root}>
-      <Typography variant='h3' padding='10px'>Изделие</Typography>
+      <Typography variant='h3' padding='10px' alignSelf='center'>Изделие</Typography>
       <Box className={classes.navItem}>
         <DataLoaderDropdown onSendData={handleSerial}/>
-        <TextField name='Серийный номер' label='Серийный номер' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Серийный номер']} onChange={handleDateChange}></TextField>
+        <TextField name='Серийный номер' label='Серийный номер' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Серийный номер']} onChange={handleDateChange}></TextField>
       </Box>
       <Box className={classes.navItem}>
-        <TextField name='Дата производства' label='Дата производства' type='date' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата производства']} onChange={handleDateChange}></TextField>
-        <TextField name='Дата начала сборки' label='Дата начала сборки' type='date' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата начала сборки']} onChange={handleDateChange}></TextField>
+        <TextField name='Дата производства' label='Дата производства' type='date' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата производства']} onChange={handleDateChange}></TextField>
+        <TextField name='Дата начала сборки' label='Дата начала сборки' type='date' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата начала сборки']} onChange={handleDateChange}></TextField>
       </Box>
       <Box className={classes.navItem}>
-        <TextField name='Дата начала пассивации' label='Дата начала пассивации' type='date' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата начала пассивации']} onChange={handleDateChange}></TextField>
-        <TextField name='Дата окончания пассивации' label='Дата окончания пассивации' type='date' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата окончания пассивации']} onChange={handleDateChange}></TextField>
+        <TextField name='Дата начала пассивации' label='Дата начала пассивации' type='date' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата начала пассивации']} onChange={handleDateChange}></TextField>
+        <TextField name='Дата окончания пассивации' label='Дата окончания пассивации' type='date' fullWidth InputLabelProps={{ shrink: true }} value={formData['Дата окончания пассивации']} onChange={handleDateChange}></TextField>
       </Box>
       <Box className={classes.navItem}>
         <Button variant="contained" fullWidth onClick={fetchData}>Загрузить из БД</Button>

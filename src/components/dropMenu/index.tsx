@@ -38,7 +38,6 @@ function  DataLoaderDropdown ({onSendData} : {onSendData: any}) {
                 label='Серийный номер'
                 onChange={handleChange}
                 disabled={loading}
-                size='small'
             >
                 {items.map((items: any) => (
                     <MenuItem key={items.id} value={items.id}>

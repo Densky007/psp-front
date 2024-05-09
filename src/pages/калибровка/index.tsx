@@ -10,12 +10,16 @@ const Page1 = ()=> {
   const [items, setItems] = useState([]);
   const [serial, setSerial] = useState({})
   const [formData, setFormData] = useState({
-    'Генератор водорода': '',
-    'Накал катода': '',
-    'ШкалаИП': '',
-    'Шкала': '',
-    'Смещение': '',
+    'Время работы без изменения интенсивности': '', //result[0].serialNumber
+    'Напряжение': '',
+    'Общая наработка лазера Не': '',
+    'Общее число заправок Не': '',
+    'Динамический ресурс в режиме стабилизаци': '',
+    'Энергия стабилизации': '',
+    'Общая наработка лазера РС': '',
+    'Общее число заправок РС': '',
   });
+  
   const handleSerial = (serialNum: any) => {
       setSerial(serialNum)
   }
@@ -52,11 +56,14 @@ const Page1 = ()=> {
       }
       const result = await response.json();
       setFormData({
-        'Генератор водорода': result[0].title, //result[0].serialNumber
-        'Накал катода': result[0].title,
-        'ШкалаИП': result[0].body,
-        'Шкала': result[0].passivationStart,
-        'Смещение': result[0].passivationStart,
+        'Время работы без изменения интенсивности': result[0].title, //result[0].serialNumber
+        'Напряжение': result[0].title,
+        'Общая наработка лазера Не': result[0].body,
+        'Общее число заправок Не': result[0].passivationStart,
+        'Динамический ресурс в режиме стабилизаци': result[0].passivationStart,
+        'Энергия стабилизации': result[0].stabenergy,
+        'Общая наработка лазера РС': result[0].workTimeRS,
+        'Общее число заправок РС': result[0].refielCountRS,
       })
     } catch (error) { 
       console.error('Error sending data:', error)
@@ -85,37 +92,47 @@ const Page1 = ()=> {
 
   return (
     <Box className={classes.root}>
-      <Typography variant='h3' padding='10px'>Калибровка</Typography>
+      <Typography variant='h3' padding='10px' alignSelf='center'>Калибровка</Typography>
       <Box className={classes.navItem}>
         <DataLoaderDropdown onSendData={handleSerial}/>
       </Box>
       <Box className={classes.navItem}>
-        <Typography>Тиратрон</Typography>
+        <Typography>Ресурсные характеристики (HeF2)</Typography>
       </Box>
       <Box className={classes.navItem}>
-        <Typography width='200px'>Генератор водорода</Typography>
-        <TextField name='Генератор водорода' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Генератор водорода']} onChange={handleDateChange}></TextField>
+        <Typography width='300px' alignContent='center'>Время работы без изменения интенсивности</Typography>
+        <TextField name='Время работы без изменения интенсивности' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Время работы без изменения интенсивности']} onChange={handleDateChange}></TextField>
       </Box>
       <Box className={classes.navItem}>
-        <Typography width='200px'>Накал катода</Typography>
-        <TextField name='Накал катода' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Накал катода']} onChange={handleDateChange}></TextField>
+        <Typography width='300px' alignContent='center'>Напряжение</Typography>
+        <TextField name='Напряжение' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Напряжение']} onChange={handleDateChange}></TextField>
       </Box>
       <Box className={classes.navItem}>
-        <Typography>ИП</Typography>
+        <Typography width='300px' alignContent='center'>Общая наработка лазера</Typography>
+        <TextField name='Общая наработка лазера Не' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Общая наработка лазера Не']} onChange={handleDateChange}></TextField>        
       </Box>
       <Box className={classes.navItem}>
-        <Typography width='200px'>Шкала</Typography>
-        <TextField name='ШкалаИП' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['ШкалаИП']} onChange={handleDateChange}></TextField>        
+        <Typography width='300px' alignContent='center'>Общее число заправок</Typography>
+        <TextField name='Общее число заправок Не' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Общее число заправок Не']} onChange={handleDateChange}></TextField>
       </Box>
       <Box className={classes.navItem}>
-        <Typography>Датчик давления</Typography>
+        <Typography>Ресурсные характеристики ("рабочая смесь")</Typography>
       </Box>
       <Box className={classes.navItem}>
-        <Typography width='200px'>Шкала</Typography>
-        <TextField name='Шкала' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Шкала']} onChange={handleDateChange}></TextField>      </Box>
+        <Typography width='300px' alignContent='center'>Динамический ресурс в режиме стабилизации</Typography>
+        <TextField name='Динамический ресурс в режиме стабилизаци' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Динамический ресурс в режиме стабилизаци']} onChange={handleDateChange}></TextField>
+      </Box>
       <Box className={classes.navItem}>
-        <Typography width='200px'>Смещение</Typography>
-        <TextField name='Смещение' type='text' size='small' fullWidth InputLabelProps={{ shrink: true }} value={formData['Смещение']} onChange={handleDateChange}></TextField>
+        <Typography width='300px' alignContent='center'>Энергия стабилизации</Typography>
+        <TextField name='Энергия стабилизации' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Энергия стабилизации']} onChange={handleDateChange}></TextField>
+      </Box>
+      <Box className={classes.navItem}>
+        <Typography width='300px' alignContent='center'>Общая наработка лазера</Typography>
+        <TextField name='Общая наработка лазера РС' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Общая наработка лазера РС']} onChange={handleDateChange}></TextField>        
+      </Box>
+      <Box className={classes.navItem}>
+        <Typography width='300px' alignContent='center'>Общее число заправок</Typography>
+        <TextField name='Общее число заправок РС' type='text' fullWidth InputLabelProps={{ shrink: true }} value={formData['Общее число заправок РС']} onChange={handleDateChange}></TextField>
       </Box>
       <Box className={classes.navItem}>
         <Button variant="contained" fullWidth onClick={fetchData}>Загрузить из БД</Button>

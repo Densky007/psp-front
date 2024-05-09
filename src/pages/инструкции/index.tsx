@@ -86,7 +86,7 @@ const Page1 = ()=> {
 
   return (
     <Box className={classes.root}>
-      <Typography variant='h3' padding='10px'>Инструкции</Typography>
+      <Typography variant='h3' padding='10px' alignSelf='center'>Инструкции</Typography>
       <Box className={classes.navItem}>
         <DownloadButton 
           url={'https://example.com/path/to/your/file.pdf'} 
