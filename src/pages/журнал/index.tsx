@@ -90,7 +90,7 @@ function EditableTable() {
           <Table>
             <TableHead>
               <TableRow>
-                <TableCell align='center'>ID</TableCell>
+                <TableCell align='center'>Наблюдение</TableCell>
                 <TableCell align='center'>Дата</TableCell>
                 <TableCell align='center'>P, mB</TableCell>
                 <TableCell align='center'>U, kV</TableCell>
@@ -110,6 +110,7 @@ function EditableTable() {
                       value={row.userId}
                       onChange={(e) => handleEdit(e, index, '')}
                       size="small"
+                      type='date'
                     />
                   </TableCell>
                   <TableCell>
